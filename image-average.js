@@ -11,7 +11,7 @@ module.exports = function(RED) {
   function ImageAverageNode(config) {
     RED.nodes.createNode(this, config);
     let node = this;
-    node.on('input', (msg) => { input(node, data, config); });
+    node.on('input', (msg) => { input(node, msg, config); });
   }
 
   RED.nodes.registerType('image-average', ImageAverageNode);
