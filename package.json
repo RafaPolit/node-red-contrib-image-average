@@ -1,0 +1,23 @@
+{
+  "name": "node-red-contrib-image-average",
+  "version": "0.0.1",
+  "description": "A brute force approach at image average for small images",
+  "dependencies": {
+    "jimp": "^0.2.28"
+  },
+  "repository" : {
+    "type":"git",
+    "url":"https://github.com/RafaPolit/node-red-contrib-image-average"
+  },
+  "license": "MIT",
+  "keywords": [
+    "jimp",
+    "image-average",
+    "rafapolit"
+  ],
+  "node-red": {
+    "nodes": {
+      "image-average": "image-average.js"
+    }
+  }
+}
