@@ -1,0 +1,31 @@
+<script type="text/javascript">
+  RED.nodes.registerType('image-average',{
+    category: 'function',
+    color: '#3fadb5',
+    defaults: {
+      name: { value: '' },
+      URL: { value: '' },
+    },
+    inputs:1,
+    outputs:1,
+    icon: "image.svg",
+    label: function() {
+      return this.name||"image-average";
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="image-average">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-URL"><i class="fa fa-globe"></i> URL</label>
+    <input type="text" id="node-input-URL" placeholder="payload">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="lower-case">
+  <p>Node that outputs the average color of an image, attempting a brute force approach as of v0.0.1</p>
+</script>
