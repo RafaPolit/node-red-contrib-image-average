@@ -16,7 +16,9 @@ const input = (node, msg, config) => {
       values.push([ this.bitmap.data[ idx + 0 ], this.bitmap.data[ idx + 1 ], this.bitmap.data[ idx + 2 ] ]);
     });
 
-    msg.payload = { values };
+    const avg = values.reduce((a,b) => ([a[0] + b[0], a[1] + b[1], a[2] + b[2]]), [0, 0, 0]);
+
+    msg.payload = avg.map(v => v / values.length);
 
     node.send(msg);
   }).catch(function (err) {
