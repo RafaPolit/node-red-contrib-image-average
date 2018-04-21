@@ -1,9 +1,9 @@
 const Jimp = require('jimp');
 
 const input = (node, msg, config) => {
-  node.warn('Config:', config);
-  node.warn('msg:', msg);
-  node.warn('jimp?:', Jimp);
+  node.warn('Config:' + config);
+  node.warn('msg:' + msg);
+  node.warn('jimp?:' + Jimp);
   node.send(msg);
 }
 
