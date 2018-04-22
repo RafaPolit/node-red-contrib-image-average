@@ -1,32 +1,31 @@
 const Jimp = require('jimp');
 
 const input = (node, msg, config) => {
-  node.send(msg);
-  // const URL = config.URL || msg.payload;
+  const URL = config.URL || msg.payload;
 
-  // let t = process.hrtime();
+  let t = process.hrtime();
 
-  // Jimp.read(URL)
-  // .then(function (img) {
-  //   const values = [0, 0, 0];
-  //   img.scan(0, 0, img.bitmap.width, img.bitmap.height, function (x, y, idx) {
-  //     values = [
-  //       values[0] + this.bitmap.data[ idx + 0 ],
-  //       values[1] + this.bitmap.data[ idx + 1 ],
-  //       values[2] + this.bitmap.data[ idx + 2 ]
-  //     ]);
-  //   });
+  Jimp.read(URL)
+  .then(function (img) {
+    let values = [0, 0, 0];
+    img.scan(0, 0, img.bitmap.width, img.bitmap.height, function (x, y, idx) {
+      values = [
+        values[0] + this.bitmap.data[ idx + 0 ],
+        values[1] + this.bitmap.data[ idx + 1 ],
+        values[2] + this.bitmap.data[ idx + 2 ]
+      ]);
+    });
 
-  //   msg.payload = avg.map(v => v / values.length);
+    msg.payload = values.map(v => v / values.length);
 
-  //   t = process.hrtime(t);
+    t = process.hrtime(t);
 
-  //   msg.stats = { pixels: values.length, time: t[0] + t[1] / 1000000000 }
+    msg.stats = { pixels: values.length, time: t[0] + t[1] / 1000000000 }
 
-  //   node.send(msg);
-  // }).catch(function (err) {
-  //   node.warn(err);
-  // });
+    node.send(msg);
+  }).catch(function (err) {
+    node.warn(err);
+  });
 
 }
 
