@@ -16,7 +16,7 @@ const input = (node, msg, config) => {
       ];
     });
 
-    const pixels = img.bitmap.width  * img.bitmap.height;
+    const pixels = img.bitmap.width * img.bitmap.height;
     msg.payload = values.map(v => v / pixels);
 
     t = process.hrtime(t);
