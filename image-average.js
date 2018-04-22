@@ -13,7 +13,7 @@ const input = (node, msg, config) => {
         values[0] + this.bitmap.data[ idx + 0 ],
         values[1] + this.bitmap.data[ idx + 1 ],
         values[2] + this.bitmap.data[ idx + 2 ]
-      ]);
+      ];
     });
 
     msg.payload = values.map(v => v / values.length);
