@@ -16,11 +16,12 @@ const input = (node, msg, config) => {
       ];
     });
 
-    msg.payload = values.map(v => v / values.length);
+    const pixels = img.bitmap.width  * img.bitmap.height;
+    msg.payload = values.map(v => v / pixels);
 
     t = process.hrtime(t);
 
-    msg.stats = { pixels: values.length, time: t[0] + t[1] / 1000000000 }
+    msg.stats = { pixels, time: t[0] + t[1] / 1000000000 }
 
     node.send(msg);
   }).catch(function (err) {
