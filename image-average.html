@@ -41,9 +41,10 @@
     <dd>Basic stats with pixels used and time (in secs) employed from fetch to result.</dd>
   </dl>
   <h3>Details</h3>
-  <p>The node uses, by default, the <code>msg.payload</code> as the input for the image average, or the source field. The URL property can contain <a href="http://mustache.github.io/mustache.5.html" target="_blank">mustache-style</a> tags. These allow the
+  <p>The node uses, by default, the <code>msg.payload</code> as the input for the image average, or the source field.</p>
+  <p>The URL property can contain <a href="http://mustache.github.io/mustache.5.html" target="_blank">mustache-style</a> tags. These allow the
   source to be constructed using values of the incoming message. For example, if the url is set to
   <code>example.com/{{{topic}}}</code>, it will have the value of <code>msg.topic</code> automatically inserted.
   Using {{{...}}} prevents mustache from escaping characters like / &amp; etc.</p>
-  <p><b>Note</b>: The node outputs the RGB values as a 3 item array in <code>msg.payload</code>.  It also outputs a convenient <code>msg.stats</code> object so you evaluate the performance inpact.  The time (in secs) reported, consists of the combined time to fetch the image till the output is processed.  Use as small an image as possible, as even small 64 x 64 images can take up to a second to compute, depending on your hardware.</p>
+  <p><b>Note</b>: The node outputs the RGB values as a 3 item array in <code>msg.payload</code>.  It also outputs a convenient <code>msg.stats</code> object so you evaluate the performance impact.  The time (in secs) reported, consists of the combined time to fetch the image till the output is processed.  Use as small an image as possible, as even small 64 x 64 pixel image can take up to a second to compute, depending on your hardware.</p>
 </script>
