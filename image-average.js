@@ -2,6 +2,7 @@ const Mustache = require('mustache');
 const Jimp = require('jimp');
 
 const input = (node, msg, config) => {
+  node.warn('Config:', config);
   const source = config.source ? Mustache.render(config.source, msg) : msg.payload;
   node.warn('About to use source: ' + source);
   let t = process.hrtime();
