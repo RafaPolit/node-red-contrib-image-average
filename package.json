@@ -12,8 +12,10 @@
   },
   "license": "MIT",
   "keywords": [
+    "node-red",
     "jimp",
-    "image-average",
+    "image processing"
+    "image average",
     "rafapolit"
   ],
   "node-red": {
