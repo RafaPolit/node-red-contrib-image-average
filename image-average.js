@@ -3,31 +3,33 @@ const Jimp = require('jimp');
 
 const input = (node, msg, config) => {
   const source = config.source ? Mustache.render(config.source, msg) || msg.payload;
-
+  node.warn('About to use source: ', source);
   let t = process.hrtime();
 
-  Jimp.read(source)
-  .then(function (img) {
-    let values = [0, 0, 0];
-    img.scan(0, 0, img.bitmap.width, img.bitmap.height, function (x, y, idx) {
-      values = [
-        values[0] + this.bitmap.data[ idx + 0 ],
-        values[1] + this.bitmap.data[ idx + 1 ],
-        values[2] + this.bitmap.data[ idx + 2 ]
-      ];
-    });
+  // Jimp.read(source)
+  // .then(function (img) {
+  //   let values = [0, 0, 0];
+  //   img.scan(0, 0, img.bitmap.width, img.bitmap.height, function (x, y, idx) {
+  //     values = [
+  //       values[0] + this.bitmap.data[ idx + 0 ],
+  //       values[1] + this.bitmap.data[ idx + 1 ],
+  //       values[2] + this.bitmap.data[ idx + 2 ]
+  //     ];
+  //   });
 
-    const pixels = img.bitmap.width * img.bitmap.height;
-    msg.payload = values.map(v => Math.round(v / pixels));
+  //   const pixels = img.bitmap.width * img.bitmap.height;
+  //   msg.payload = values.map(v => Math.round(v / pixels));
 
-    t = process.hrtime(t);
+  //   t = process.hrtime(t);
 
-    msg.stats = { pixels, secs: t[0] + t[1] / 1000000000 }
+  //   msg.stats = { pixels, secs: t[0] + t[1] / 1000000000 }
 
-    node.send(msg);
-  }).catch(function (err) {
-    node.warn(err);
-  });
+  //   node.send(msg);
+  // }).catch(function (err) {
+  //   node.warn(err);
+  // });
+
+  node.send(msg);
 
 }
 
