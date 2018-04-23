@@ -1,11 +1,12 @@
+const Mustache = require('mustache');
 const Jimp = require('jimp');
 
 const input = (node, msg, config) => {
-  const URL = config.URL || msg.payload;
+  const source = config.source ? Mustache.render(config.source, msg) || msg.payload;
 
   let t = process.hrtime();
 
-  Jimp.read(URL)
+  Jimp.read(source)
   .then(function (img) {
     let values = [0, 0, 0];
     img.scan(0, 0, img.bitmap.width, img.bitmap.height, function (x, y, idx) {
